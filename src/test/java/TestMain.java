@@ -1,5 +1,3 @@
-
-
 class Testmain {
     @org.junit.jupiter.api.Test
     void CollisionExist() {
