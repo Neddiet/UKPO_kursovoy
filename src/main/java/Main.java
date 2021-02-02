@@ -80,6 +80,7 @@ class Coord {
     }
 
     public void show(Coord[] point, int n) {
+        
         int r = 0;
         if (point[n].exist) {
             int k = (point[n].x + point[n].y);
