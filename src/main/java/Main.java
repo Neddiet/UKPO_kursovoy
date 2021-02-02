@@ -15,7 +15,7 @@ class main {
             int h = hash_f(k);
             myList[h].add(myList, x, y, col, exist, h);
         }
- // Вывод таблицы на экран
+// Вывод таблицы на экран
         System.out.println("x y Ключи");
         for (int i = 0; i < 100; i++) {
         myList[i].show(myList, i);
@@ -91,4 +91,5 @@ class Coord {
                 System.out.print("\n");
         }
     }
-}
+} 
+
