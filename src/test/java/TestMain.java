@@ -1,73 +1,46 @@
 
-import org.junit.Assert;
-import org.junit.Test;
 
-public class TestMain {
-
-        @Test
-        public void testInsertToEmptyTree() {
-            Main t1 = new Main();
-            t1.insert(1);
-            Assert.assertEquals(1, t1.mRoot.mValue);
+class Testmain {
+    @org.junit.jupiter.api.Test
+    void CollisionExist() {
+        String msg1 = "Collision is exist!";
+        String msg2 = "Collision isn't exist!";
+        Coord[] myList = new Coord[100];
+        for (int i = 0; i < 100; i++) {
+            myList[i] = new Coord(0, 0, 0, false);
         }
-    @Test
-    public void testDefaultConstructor() {
-        Main t1 = new Main();
-        Assert.assertNull(t1.mRoot);
-    }
-
-    @Test
-    public void testIntegerConstructor() {
-        Main t1 = new Main(1);
-        Assert.assertNotNull(t1.mRoot);
-    }
-
-
-    @Test
-    public void testEqualTreesEqualHashCodes() {
-        Main t1 = new Main(10);
-        t1.insert(2, 12);
-        Main t2 = new Main(10);
-        t2.insert(2, 12);
-        Assert.assertEquals(t1.hashCode(), t2.hashCode());
-    }
-
-
-    @Test
-    public void testToStringEmpty() {
-        Main t1 = new Main();
-        Assert.assertEquals("[]", t1.toString());
-    }
-
-    @Test
-    public void testToStringSingleNode() {
-        Main t1 = new Main(1);
-        Assert.assertEquals("[1]", t1.toString());
-    }
-
-    @Test
-    public void testToStringManyNodes() {
-        Main t1 = new Main(1);
-        t1.insert(12, 56, 7, 2, 1);
-        Assert.assertEquals("[1, 1, 2, 7, 12, 56]", t1.toString());
-    }
-
-        @org.junit.Test
-        public void testSingleRotateLeft() {
-            Main t1 = new Main(10);
-            t1.insert(14, 56);
-            Assert.assertEquals(t1.mRoot.mValue, 14);
-            Assert.assertEquals(t1.mRoot.mLeft.mValue, 10);
-            Assert.assertEquals(t1.mRoot.mRight.mValue, 56);
+        myList[5].add(myList, 15, 90, 0, true, 5);
+        myList[5].add(myList, 67, 38, 0, true, 5);
+        myList[7].add(myList, 88, 19, 0, true, 7);
+        myList[15].add(myList, 99, 16, 0, true, 15);
+        myList[62].add(myList, 54, 8, 0, true, 62);
+        for (int i = 0; i < 100; i++) {
+            myList[i].get(myList, i);
+            if (myList[i].get(myList, i) == msg1) {
+                msg2 = msg1;
+                break;
+            }
         }
-
-        @org.junit.Test
-        public void testSingleRotateRight() {
-            Main t1 = new Main(10);
-            t1.insert(2, 1);
-            Assert.assertEquals(t1.mRoot.mValue, 2);
-            Assert.assertEquals(t1.mRoot.mLeft.mValue, 1);
-            Assert.assertEquals(t1.mRoot.mRight.mValue, 10);
-        }
+        assert (msg1 == msg2);
     }
 
+    @org.junit.jupiter.api.Test
+    void CollisionDoesNotExist() {
+        String msg1 = "Collision is exist!";
+        String msg2 = "Collision isn't exist!";
+        Coord[] myList = new Coord[100];
+        for (int i = 0; i < 100; i++) {
+            myList[i] = new Coord(0, 0, 0, false);
+        }
+        myList[39].add(myList, 93, 46, 0, true, 39);
+        myList[59].add(myList, 3, 56, 0, true, 59);
+        for (int i = 0; i < 100; i++) {
+            myList[i].get(myList, i);
+            if (myList[i].get(myList, i) == msg2) {
+                msg1 = msg2;
+                break;
+            }
+        }
+        assert (msg1 == msg2);
+    }
+}
